@@ -23,21 +23,39 @@ def getJson( theapicat ):
 
 def getBreed( cats ):
     cats_breeds = getJson( cats )
+    count = 0
     try:
         for breeds in cats_breeds:
             #print("cfa_url" + i["cfa_url"])
             #for url in breeds:
-                #while count <= 3:
-            if "cfa_url" in breeds:
-                print(breeds["cfa_url"])
+            while count < 3:
+            #for count in range(3):
+                if "cfa_url" in breeds:
+                    print(count)
+                    print(breeds["cfa_url"])
+                    count += 1
+                    #if count >= limit:
+                    #    break
     
     except Exception as err:
         print(f'cfa_url does not exist for this breed: {err}')   
         
+def getCategoy( catsCat ):
+    get_category = getJson(catsCat)
+    #cats_breeds = getJson( 
+    #catsBreeds )
+    
+    #for breeds in cats_breeds:
+    for category in get_category:
+        print(category)
+        if (category["name"]) == "hats":
+            #print(breeds["cfa_url"])
+            print(category["name"])
+                                   
            
 if __name__ == '__main__':
-    #getJson("https://api.thecatapi.com/v1/breeds")
     getBreed("https://api.thecatapi.com/v1/breeds")
+    getCategoy("https://api.thecatapi.com/v1/categories")
 
 
 ############################### NOTES ###############################################
